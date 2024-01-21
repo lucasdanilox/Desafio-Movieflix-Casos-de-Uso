@@ -33,5 +33,4 @@ public class MovieService {
         Movie entity = movie.orElseThrow(() -> new ResourceNotFoundException("Entity not found"));
         return new MovieDetailsDTO(entity);
     }
-
 }
