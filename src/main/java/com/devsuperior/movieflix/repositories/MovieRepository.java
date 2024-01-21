@@ -14,5 +14,4 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     @Query(value = "SELECT obj FROM Movie obj WHERE(:genreId = 0 OR obj.genre.id = :genreId) ORDER BY obj.title ASC")
     Page<Movie> findByGenre(@Param("genreId") Long genreId, Pageable pageable);
 
-
 }
