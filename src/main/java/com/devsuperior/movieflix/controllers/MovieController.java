@@ -37,8 +37,8 @@ public class MovieController {
     }
 
     @GetMapping(value = "/{id}/reviews")
-    public ResponseEntity<List<ReviewDTO>> review() {
-        List<ReviewDTO> dto = reviewService.review();
+    public ResponseEntity<List<ReviewDTO>> review(@PathVariable Long id) {
+        List<ReviewDTO> dto = reviewService.review(id);
         return ResponseEntity.ok(dto);
     }
 }

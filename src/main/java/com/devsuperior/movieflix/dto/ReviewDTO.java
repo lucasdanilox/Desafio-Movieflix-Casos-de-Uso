@@ -33,7 +33,7 @@ public class ReviewDTO {
     public ReviewDTO(Review entity) {
         id = entity.getId();
         text = entity.getText();
-        movieId = entity.getId();
+        movieId = entity.getMovie().getId();
         userId = entity.getUser().getId();
         userName = entity.getUser().getName();
         userEmail = entity.getUser().getEmail();
