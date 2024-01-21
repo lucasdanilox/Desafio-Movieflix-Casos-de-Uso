@@ -1,8 +1,10 @@
 package com.devsuperior.movieflix.dto;
 
 import com.devsuperior.movieflix.entities.Review;
+import com.devsuperior.movieflix.repositories.MovieRepository;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ReviewDTO {
 
@@ -13,7 +15,6 @@ public class ReviewDTO {
 
     @NotNull(message = "Campo requerido")
     private Long movieId;
-
     private Long userId;
     private String userName;
     private String userEmail;
