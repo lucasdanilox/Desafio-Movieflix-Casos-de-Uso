@@ -18,7 +18,7 @@ public class GenreService {
 
     @Transactional(readOnly = true)
     public List<GenreDTO> findAll() {
-        List<Genre> genre = repository.findAll(Sort.by("name"));
+        List<Genre> genre = repository.findAll();
         return genre.stream().map(x -> new GenreDTO(x)).toList();
     }
 

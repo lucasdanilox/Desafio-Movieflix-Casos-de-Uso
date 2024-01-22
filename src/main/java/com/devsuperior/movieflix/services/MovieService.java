@@ -2,7 +2,9 @@ package com.devsuperior.movieflix.services;
 
 import com.devsuperior.movieflix.dto.MovieCardDTO;
 import com.devsuperior.movieflix.dto.MovieDetailsDTO;
+import com.devsuperior.movieflix.entities.Genre;
 import com.devsuperior.movieflix.entities.Movie;
+import com.devsuperior.movieflix.repositories.GenreRepository;
 import com.devsuperior.movieflix.repositories.MovieRepository;
 import com.devsuperior.movieflix.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +21,13 @@ public class MovieService {
     @Autowired
     private MovieRepository repository;
 
+    @Autowired
+    private GenreRepository genreRepository;
+
 
     @Transactional(readOnly = true)
     public Page<MovieCardDTO> moviesByGenre(Long genreId, Pageable pageable) {
+        Genre genre = genreRepository.getReferenceById(genreId);
         Page<Movie> movies = repository.findByGenre(genreId, pageable);
         return movies.map(x -> new MovieCardDTO(x));
     }
